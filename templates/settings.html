@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - NeuralSearch{% endblock %}
+
+{% block content %}
+<div class="home-wrapper" style="justify-content: flex-start; padding-top: 50px;">
+    <div class="container" style="max-width: 700px;">
+        
+        <div style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+            <h1 style="margin: 0;">Settings</h1>
+            <a href="/" class="btn btn-outline">&larr; Back to Search</a>
+        </div>
+        
+        <div class="settings-panel">
+            <form action="/settings" method="post">
+                
+                <!-- Safe Search -->
+                <div class="setting-row">
+                    <div>
+                        <label class="widget-title" style="margin: 0; display:block;">Safe Search</label>
+                        <p style="margin: 5px 0 0; color: var(--text-muted); font-size: 0.9rem;">Filter explicit content from results.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="safe_search" {{ 'checked' if settings.safe_search == 'on' else '' }}>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <!-- Pagination -->
+                <div class="setting-row">
+                    <div>
+                        <label class="widget-title" style="margin: 0; display:block;">Results Per Page</label>
+                        <p style="margin: 5px 0 0; color: var(--text-muted); font-size: 0.9rem;">Number of results to display.</p>
+                    </div>
+                    <select name="per_page" style="padding: 8px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                        <option value="10" {{ 'selected' if settings.per_page == '10' else '' }}>10</option>
+                        <option value="20" {{ 'selected' if settings.per_page == '20' else '' }}>20</option>
+                        <option value="50" {{ 'selected' if settings.per_page == '50' else '' }}>50</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 30px; text-align: right;">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

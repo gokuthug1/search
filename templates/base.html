@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NeuralSearch - Expressive AI Search{% endblock %}</title>
+    <!-- Modern Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    
+    <!-- 2026 Premium Fonts: Outfit for Display, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // Init Theme (Default to dark for that premium feel)
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
+        }
+    </script>
+</head>
+<body>
+    {% block content %}{% endblock %}
+    
+    <script>
+        // Smooth skeleton loading transition
+        function showSkeleton() {
+            const container = document.querySelector('.main-col');
+            if(container) {
+                container.innerHTML = `
+                    <div class="skeleton" style="height: 20px; width: 40%; margin-bottom: 30px;"></div>
+                    <div class="widget skeleton" style="height: 150px;"></div>
+                    <div class="result-card">
+                        <div class="skeleton" style="height: 24px; width: 70%; margin-bottom: 12px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 100%; margin-bottom: 8px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 80%;"></div>
+                    </div>
+                     <div class="result-card">
+                        <div class="skeleton" style="height: 24px; width: 60%; margin-bottom: 12px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 90%; margin-bottom: 8px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 85%;"></div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

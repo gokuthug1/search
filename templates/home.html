@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}NeuralSearch - NextGen Search Engine{% endblock %}
+
+{% block content %}
+<div class="home-wrapper">
+    <!-- Top Right Header Controls -->
+    <div style="position: absolute; top: 30px; right: 5%; display: flex; gap: 15px; align-items: center; z-index: 100;">
+        <button class="btn-icon" onclick="toggleTheme()" title="Toggle Theme">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <a href="/settings" class="btn-icon" title="Preferences">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </a>
+    </div>
+
+    <div class="home-content">
+        <h1 class="brand-title">NeuralSearch</h1>
+        
+        <form action="/search" method="get">
+            <div class="search-container">
+                <span class="search-icon-abs">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </span>
+                <input type="text" name="q" class="search-bar" placeholder="Ask anything. Search the immersive web..." autocomplete="off" autofocus required>
+            </div>
+            
+            <div class="search-actions">
+                <button type="submit" class="btn btn-primary">Discover</button>
+                <button type="button" class="btn btn-outline" onclick="window.location.href='/search?q=Latest+News'">I'm Feeling Lucky</button>
+            </div>
+        </form>
+
+        <div class="quick-chips">
+            <span class="chip" onclick="window.location.href='/search?q=AI+Trends+2026'">AI Trends 2026</span>
+            <span class="chip" onclick="window.location.href='/search?q=Global+News'">Global News</span>
+            <span class="chip" onclick="window.location.href='/search?q=Calculator'">Calculator</span>
+            <span class="chip" onclick="window.location.href='/search?q=Abstract+Art&type=images'">Abstract Galleries</span>
+        </div>
+    </div>
+    
+    <div class="home-footer">
+        <p>Neural Network connected • Indexing <span style="font-weight: 600; color: var(--text-main);">{{ stats.pages }}</span> pages, <span style="font-weight: 600; color: var(--text-main);">{{ stats.images }}</span> images, <span style="font-weight: 600; color: var(--text-main);">{{ stats.videos }}</span> videos.</p>
+    </div>
+</div>
+{% endblock %}
